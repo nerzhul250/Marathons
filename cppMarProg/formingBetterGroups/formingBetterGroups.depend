@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1546371751 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\formingbettergroups\main.cpp
+	<iostream>
+	<cmath>
+	<bits/stdc++.h>
+

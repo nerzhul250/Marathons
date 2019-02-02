@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1546176530 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\randomtestgenerator\main.cpp
+	<iostream>
+	<time.h>
+	<fstream>
+

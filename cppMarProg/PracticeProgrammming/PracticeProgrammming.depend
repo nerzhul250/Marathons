@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1546304086 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\practiceprogrammming\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+	<algorithm>
+	<utility>
+

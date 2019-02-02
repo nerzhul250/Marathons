@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1548550759 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\cheaptrips\main.cpp
+	<iostream>
+	<algorithm>
+	<iomanip>
+	<bits/stdc++.h>
+
+1546186338 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\cheaptrips\main2.cpp
+	<bits/stdc++.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1548029355 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\keepitenergized\main.cpp
+	<iostream>
+	<vector>
+	<string.h>
+

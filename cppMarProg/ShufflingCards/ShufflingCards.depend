@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1547926177 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\shufflingcards\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+

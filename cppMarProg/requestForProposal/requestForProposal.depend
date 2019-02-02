@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1546607758 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\requestforproposal\main.cpp
+	<cstdio>
+	<cstring>
+	<iostream>
+	<float.h>
+

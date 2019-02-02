@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1545521627 source:e:\data\importantfiles\cppmarprog\marpro\main.cpp
+	<iostream>
+	<math.h>
+	<stdio.h>
+	<float.h>
+	<limits.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1548546296 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\enigma\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+

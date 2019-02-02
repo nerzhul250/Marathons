@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1547220214 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\shapenumber\main.cpp
+	<iostream>
+
+1547913898 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\shapenumber\main2.cpp
+	<iostream>
+	<string.h>
+	<fstream>
+
+1547910971 source:e:\data\importantfiles\programmingstuff\competitive programming\cppmarprog\shapenumber\main3.cpp
+	<iostream>
+	<iomanip>
+	<stdlib.h>
+	<string>
+	<algorithm>
+	<climits>
+	<fstream>
+
