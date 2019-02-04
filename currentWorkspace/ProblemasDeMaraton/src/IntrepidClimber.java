@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -24,7 +25,8 @@ class Node{
 public class IntrepidClimber {
 	static HashMap<Integer,Node>nodes;
 	public static void main(String[] args) throws IOException {
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		//BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br=new BufferedReader(new FileReader("..\\tests.txt"));
 		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
 		String A=br.readLine();
 		while(A!=null && !A.isEmpty()) {
@@ -89,8 +91,8 @@ public class IntrepidClimber {
 			}
 		}
 	}
-
 	private static void accumulativeCosts(int node) {
+		System.out.println(node);
 		Node n=nodes.get(node);
 		if(!n.children.isEmpty()) {
 			for (int i = 0; i < n.children.size(); i++) {
@@ -102,5 +104,4 @@ public class IntrepidClimber {
 			}
 		}
 	}
-
 }
