@@ -10,7 +10,7 @@ public class RandomCaseGenerator {
 		int F=5;
 		bw.write(N+" "+F+"\n");
 		for (int i = 1; i <= N-1; i++) {
-			bw.write(i+" "+(i+1)+" "+"100\n");
+			bw.write(i+" "+(i+1)+" "+"10\n");
 		}
 		String a="";
 		for (int i = 1; i <= F; i++) {

@@ -13,12 +13,14 @@ import java.util.LinkedList;
 class Node{
 	int nodeNumber;
 	boolean additive;
+	boolean visited;
 	ArrayList<Node> children;
 	Node parent;
 	int cost;
 	int accumulatedCost;
 	public Node(int nn) {
 		additive=false;
+		visited=false;
 		nodeNumber=nn;
 		parent=null;
 		children=new ArrayList<Node>();
@@ -28,14 +30,12 @@ class Node{
 }
 public class IntrepidClimber {
 	static HashMap<Integer,Node>nodes;
-	static HashSet<Integer>increasingNodes;
 	public static void main(String[] args) throws IOException {
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		//BufferedReader br=new BufferedReader(new FileReader("..\\tests.txt"));
+		//BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br=new BufferedReader(new FileReader("..\\tests.txt"));
 		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
 		String A=br.readLine();
 		while(A!=null && !A.isEmpty()) {
-			increasingNodes=new HashSet<Integer>();
 			String[] B=A.split("\\s+");
 			int N=Integer.parseInt(B[0]);
 			int F=Integer.parseInt(B[1]);
@@ -64,7 +64,6 @@ public class IntrepidClimber {
 			B=br.readLine().split("\\s+");
 			for (int i = 0; i < F; i++) {
 				nodes.get(Integer.parseInt(B[i])).additive=true;
-				increasingNodes.add(Integer.parseInt(B[i]));
 			}
 			accumulativeCosts(1);
 			bw.write(minimumCost(1,0)+"\n");
@@ -81,7 +80,7 @@ public class IntrepidClimber {
 				break;
 			}else{
 				int maximum=Integer.MIN_VALUE;
-				int index=0;
+				int index=-1;
 				for (int i = 0; i < n.children.size(); i++) {
 					if(n.children.get(i).additive) {
 						int cost=n.children.get(i).accumulatedCost+n.children.get(i).cost;
@@ -92,7 +91,7 @@ public class IntrepidClimber {
 						minCost+=cost;
 					}
 				}
-				if(maximum!=Integer.MIN_VALUE) {
+				if(maximum!=Integer.MIN_VALUE && index!=-1) {
 					minCost=minCost-maximum;
 					n=n.children.get(index);
 				}else {
@@ -103,22 +102,30 @@ public class IntrepidClimber {
 		return minCost;
 	}
 	private static void accumulativeCosts(int node) {
-		HashSet<Integer>temporaryAdditives=new HashSet<Integer>();
-		while(!increasingNodes.isEmpty()){
-			Iterator<Integer>it=increasingNodes.iterator();
-			temporaryAdditives=new HashSet<Integer>();
-			while(it.hasNext()) {
-				Node additiveNode=nodes.get(it.next());
-				Node father=additiveNode.parent;
-				if(father!=null) {
-					father.accumulatedCost+=additiveNode.cost+additiveNode.accumulatedCost;
-					if(!temporaryAdditives.contains(father.nodeNumber)) {
-						father.additive=true;
-						temporaryAdditives.add(father.nodeNumber);
+		LinkedList<Node> stackNodes=new LinkedList<Node>();
+		stackNodes.addFirst(nodes.get(node));
+		while(!stackNodes.isEmpty()) {
+			Node first=stackNodes.getFirst();
+			if(!first.visited) {
+				first.visited=true;
+				if(!first.children.isEmpty()) {
+					for (int i = 0; i < first.children.size(); i++) {
+						stackNodes.addFirst(first.children.get(i));
 					}
+				}else {
+					if(first.additive) {
+						first.parent.accumulatedCost+=first.cost+first.accumulatedCost;
+						first.parent.additive=true;
+					}
+					stackNodes.removeFirst();
 				}
+			}else {
+				if(first.additive && first.nodeNumber!=1) {
+					first.parent.accumulatedCost+=first.cost+first.accumulatedCost;
+					first.parent.additive=true;
+				}
+				stackNodes.removeFirst();
 			}
-			increasingNodes=temporaryAdditives;
 		}
 	}
 }
