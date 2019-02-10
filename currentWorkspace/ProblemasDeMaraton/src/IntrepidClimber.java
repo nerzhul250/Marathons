@@ -31,8 +31,8 @@ class Node{
 public class IntrepidClimber {
 	static HashMap<Integer,Node>nodes;
 	public static void main(String[] args) throws IOException {
-		//BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		BufferedReader br=new BufferedReader(new FileReader("..\\tests.txt"));
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		//BufferedReader br=new BufferedReader(new FileReader("..\\tests.txt"));
 		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
 		String A=br.readLine();
 		while(A!=null && !A.isEmpty()) {
