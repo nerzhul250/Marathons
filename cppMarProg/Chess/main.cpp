@@ -15,7 +15,7 @@ int main()
                 break;
             }
             case 'k':{
-                printf("%d\n",max((int)(ceil(n/2.0)*(m/2)+ceil(n/2.0)*(m%2)+n*m/4),(int)(ceil(m/2.0)*(n/2)+ceil(m/2.0)*(n%2)+n*m/4)));
+                printf("%d\n",(int)(ceil(m/2.0)*(n/2)+ceil(m/2.0)*(n%2)+(n/2)*(m/2)));
                 break;
             }
             case 'K':{
