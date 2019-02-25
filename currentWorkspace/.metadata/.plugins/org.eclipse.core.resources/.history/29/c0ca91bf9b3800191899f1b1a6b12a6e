@@ -1,0 +1,28 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class HighScore {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		BigInteger a;
+		BigInteger b;
+		BigInteger c;
+		BigInteger d;
+		
+		for (int i = 0; i < n; i++) {
+			a=BigInteger.valueOf(sc.nextLong());
+			b=BigInteger.valueOf(sc.nextLong());
+			c=BigInteger.valueOf(sc.nextLong());
+			d=BigInteger.valueOf(sc.nextLong());
+			
+			
+		}
+		
+	}
+	
+	static BigInteger op(BigInteger a,BigInteger b,BigInteger c) {
+		return a.multiply(a).add(b.multiply(b)).add(c.multiply(c)).add(BigInteger.valueOf(7).multiply(a.min(b).min(c)))
+	}
+}
