@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1552653367 source:d:\maratones\cppmarprog\jackandthebeanbag\main.cpp
+	<iostream>
+	<limits.h>
+

@@ -10,7 +10,7 @@ typedef int64_t ll;
 
 int k,n;
 ll S[105],A[1000005],cuenta[105];
-unordered_set<ll>Aset;
+bool Aset[200000005];
 
 
 bool myfunction (pair<ll,ll> i,pair<ll,ll> j) {
@@ -28,10 +28,12 @@ bool myfunction (pair<ll,ll> i,pair<ll,ll> j) {
 int main()
 {
     scanf("%d %d",&n,&k);
+
     for (int i=0;i<n;i++){
         scanf("%lld",&A[i]);
-        Aset.insert(A[i]);
+        Aset[A[i]]=true;
     }
+
     for (int i=0;i<k;i++){
         scanf("%lld",&S[i]);
     }
@@ -43,7 +45,7 @@ int main()
         for (int i=0;i<n;i++){
             if(S[j]-A[i]<=0)break;
             if(S[j]-A[i]<=A[i])break;
-            if(Aset.find(S[j]-A[i])!=Aset.end()){
+            if(Aset[S[j]-A[i]]){
                 cuenta[j]++;
             }
         }
