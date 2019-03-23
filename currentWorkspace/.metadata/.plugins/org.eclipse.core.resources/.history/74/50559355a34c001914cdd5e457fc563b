@@ -1,0 +1,24 @@
+import java.util.Collections;
+import java.util.Scanner;
+
+public class playground {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int B=Integer.parseInt(sc.nextLine());
+		int H=Integer.parseInt(sc.nextLine());
+		char[] A=sc.nextLine().toCharArray();
+		int r=A[0] - '0';
+		int c=A[2]- '0';
+		int[][] binarydisco=new int[r][c];
+		double[][] disco=new double[r][c];
+		for (int i = 0; i < r; i++) {
+			A=sc.nextLine().toCharArray();
+			for (int j = 0; j < c; j++) {
+				disco[i][j]=A[j] - '0';
+				System.out.println(disco[i][j]);
+			}
+		}
+	}
+
+}

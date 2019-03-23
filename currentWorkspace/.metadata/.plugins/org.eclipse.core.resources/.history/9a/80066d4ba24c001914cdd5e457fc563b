@@ -1,0 +1,12 @@
+import java.util.Collections;
+import java.util.Scanner;
+
+public class playground {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int r=sc.nextInt();
+		int c=sc.nextInt();
+	}
+
+}

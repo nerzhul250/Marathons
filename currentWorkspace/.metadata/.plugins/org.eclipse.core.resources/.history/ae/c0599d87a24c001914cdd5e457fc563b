@@ -1,0 +1,21 @@
+import java.util.Collections;
+import java.util.Scanner;
+
+public class playground {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int B=sc.nextInt();
+		int H=sc.nextInt();
+		int r=sc.nextInt();
+		int c=sc.nextInt();
+		int[][] binarydisco=new int[r][c];
+		double[][] disco=new double[r][c];
+		for (int i = 0; i < r; i++) {
+			for (int j = 0; j < c; j++) {
+				
+			}
+		}
+	}
+
+}

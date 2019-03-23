@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1553180503 source:d:\maratones\cppmarprog\softwareallocation\main.cpp
+	<cstdio>
+	<vector>
+	<utility>
+	<bitset>
+	<queue>
+	<algorithm>
+	<cstring>
+
