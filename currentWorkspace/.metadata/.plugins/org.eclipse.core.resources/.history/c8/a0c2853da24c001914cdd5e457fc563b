@@ -1,9 +1,0 @@
-import java.util.Collections;
-
-public class playground {
-
-	public static void main(String[] args) {
-		Scanner sc=new Scanner(;)
-	}
-
-}
