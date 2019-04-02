@@ -1,69 +1,64 @@
 #include <iostream>
-
+#include <iomanip>
 using namespace std;
-const int MAXB=20,MAXF=20;
-int B,F,indexBand,auxIndex;
-double szBands[MAXB],prcBands[MAXB],finalTax,earns[MAXF],gifts[MAXF],firstBand,total,canGet;
 
-int main()
-{
+typedef long double ld;
 
-    scanf("%d",&B);
-    for (int i=0;i<B;i++)scanf("%lf %lf",&szBands[i],&prcBands[i]);
-    scanf("%lf",&finalTax);
-    scanf("%d",&F);
-    for (int i=0;i<F;i++)scanf("%lf %lf",&earns[i],&gifts[i]);
-    for (int i=0;i<F;i++){
-        total=0;
-        auxIndex=0;
-        firstBand=szBands[0];
-        indexBand=0;
+ld s[20];
+ld p[20];
+ld over_band;
 
-        while(earns[i]!=0){
-            if(indexBand<B && earns[i]<szBands[indexBand]){
-                firstBand=szBands[indexBand];
-                auxIndex=indexBand;
-                szBands[indexBand]-=earns[i];
-                earns[i]=0;
-            }else if(indexBand<B){
-                earns[i]-=szBands[indexBand];
-                indexBand++;
-            }else{
-                earns[i]=0;
-            }
+ld e[20];
+ld m[20];
+
+ld g[20];
+
+int main(){
+  // Get the data
+  int b; cin>>b;
+  cout.precision(12);
+
+  for (int i=0; i<b; i++){
+    cin>>s[i]>>p[i];
+    p[i] = p[i] / 100;
+  }
+  cin>>over_band;
+  over_band = over_band / 100;
+
+  int f; cin>>f;
+
+  for(int j=0; j < f; j++){
+    cin>>e[j]>>m[j];
+
+    ld my_e = e[j];
+    int k;
+    ld t = 0;
+    // work out what tax brand we start in.
+    for(k = 0; k < b ; k++) {
+      my_e -= s[k];
+      if (my_e <= 0) {
+        // cout<<"testing "<<(1 - p[k])<<'\n';
+        // we've found the tax band to start in.
+        if (my_e + (m[j] / (1 - p[k])) <= 0) {
+          // Even with the interest, we're still in the band. leave here.
+          t += m[j] / (1 - p[k]);
+          m[j] = 0;
+          break;
+        } else {
+          // adding the tax on moves us up a band.
+          t -= my_e; // ADD the space that was left in this band.
+          m[j] += -my_e * p[k]; // Add the tax onto the total for the space.
+          m[j] += my_e; // Remove the space from this band.
+          my_e = 0; // reset to 0
         }
-
-        while(indexBand<B && gifts[i]!=0){
-            if(prcBands[indexBand]!=100){
-                if(prcBands[indexBand]==0){
-                    canGet=szBands[indexBand];
-                }else{
-                    canGet=szBands[indexBand]/100*(100-prcBands[indexBand]);
-                }
-                if(canGet>=gifts[i] && prcBands[indexBand]==0){
-                    total+=gifts[i];
-                    gifts[i]=0;
-                }else if(canGet>=gifts[i]){
-                    total+=gifts[i]/(100-prcBands[indexBand])*100;
-                    gifts[i]=0;
-                }else{
-                    total+=szBands[indexBand];
-                    gifts[i]-=canGet;
-                }
-            }else{
-                total+=szBands[indexBand];
-            }
-            indexBand++;
-        }
-        if(gifts[i]!=0){
-            if(finalTax==0){
-                total+=gifts[i];
-            }else{
-                total+=gifts[i]/(100-finalTax)*100;
-            }
-        }
-        printf("%.6f\n",total);
-        szBands[auxIndex]=firstBand;
+      }
     }
-    return 0;
+    if (m[j] > 0) {
+      // we have some left that needs to be taxed at the top rate.
+      t += m[j] / (1 - over_band);
+    }
+
+
+    cout<<fixed<<t<<"\n";
+  }
 }
