@@ -1,0 +1,28 @@
+class Azulejo implements Comparable<Azulejo>{
+	int price;
+	int height;
+	public Azulejo(int p,int h) {
+		price=p;
+		height=h;
+	}
+	@Override
+	public int compareTo(Azulejo a) {
+		Integer p1=price;
+		Integer p2=a.price;
+		int com1=p1.compareTo(p2);
+		if(com1==0) {
+			Integer h1=height;
+			Integer h2=a.height;
+			return h2.compareTo(h1);
+		}else {return com1;}
+	}
+	
+}
+public class Azulejos {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
