@@ -1,0 +1,61 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+
+public class Pylons {
+	static int R,C;
+	static boolean possible;
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+		int T=Integer.parseInt(br.readLine());
+		for (int t = 0;t < T; t++) {
+			String[] A=br.readLine().split("\\s+");
+			R=Integer.parseInt(A[0]);
+			C=Integer.parseInt(A[1]);
+			possible=false;
+			boolean[][] galaxy=new boolean[R][C];
+			ArrayList<Integer> positions=new ArrayList<Integer>();
+			for (int i = 0; i < galaxy.length; i++) {
+				for (int j = 0; j < galaxy.length; j++) {
+					
+				}
+			}
+			galaxy[0][0]=true;
+			positions.add(0);positions.add(0);
+			f(0,0,0,1,galaxy,1);
+			galaxy[0][0]=false;
+			positions.remove(positions.size()-1);positions.remove(positions.size()-1);
+			f(-1,-1,0,1,galaxy,0);
+			if(possible) {
+				bw.write("Case #"+(t+1)+": POSSIBLE\n");
+				for (int i = 0; i < A.length; i+=2) {
+					bw.write(positions.get(i)+" "+positions.get(i+1)+"\n");
+				}
+			}else {
+				bw.write("Case #"+(t+1)+": IMPOSSIBLE\n");
+			}
+		}
+		bw.close();
+		br.close();
+	}
+	private static boolean f(int ro, int co,int r, int c, boolean[][] galaxy, int total) {
+		if(possible)return true;
+		if(total==R*C){possible=true;return true;}
+		if(check(ro,co,r,c)) {
+			galaxy[r][c]=true;
+			
+		}
+		
+	}
+	private static boolean check(int r, int c, int i, int j) {
+		if(r==-1 && c==-1)return true;
+		if(r==i || c==j)return false;
+		if(r-c==i-j || r+c==i+j)return false;
+		return true;
+	}
+
+}

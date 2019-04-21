@@ -3,37 +3,39 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 public class Pylons {
-	static int[] memo;
 	static int R,C;
-	static StringBuilder builder;
+	static boolean possible;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
 		int T=Integer.parseInt(br.readLine());
 		for (int t = 0;t < T; t++) {
 			String[] A=br.readLine().split("\\s+");
-			memo=new int[(1<<25)];
-			for (int i = 0; i < memo.length; i++) {
-				memo[i]=-1;
-			}
 			R=Integer.parseInt(A[0]);
 			C=Integer.parseInt(A[1]);
-			boolean possible=false;
-			for (int i = 0; i < R; i++) {
-				for (int j = 0; j < C; j++) {
-					boolean[][] galaxy=new boolean[R][C];
-					galaxy[i][j]=true;
-					StringBuilder sb=new StringBuilder();
-					sb.append((i+1)+" "+(j+1)+"\n");
-					memo[toNumber(galaxy)]=f(i,j,galaxy,1,sb)?1:0;
-					possible=possible|memo[toNumber(galaxy)]==1?true:false;
+			possible=false;
+			boolean[][] galaxy=new boolean[R][C];
+			ArrayList<Integer> positions=new ArrayList<Integer>();
+			for (int i = 0; i < galaxy.length && !possible; i++) {
+				for (int j = 0; j < galaxy[0].length && !possible; j++) {
+					int movx=(int) (Math.random()*R);
+					int movy=(int) (Math.random()*C);
+					galaxy[movx][movy]=true;
+					positions.add(movx);positions.add(movy);
+					f(movx,movy,galaxy,positions,1);
+					if(possible)continue;
+					galaxy[movx][movy]=false;
+					positions.remove(positions.size()-1);positions.remove(positions.size()-1);
 				}
 			}
 			if(possible) {
 				bw.write("Case #"+(t+1)+": POSSIBLE\n");
-				bw.write(builder.toString());;
+				for (int i = 0; i < positions.size(); i+=2) {
+					bw.write((positions.get(i)+1)+" "+(positions.get(i+1)+1)+"\n");
+				}
 			}else {
 				bw.write("Case #"+(t+1)+": IMPOSSIBLE\n");
 			}
@@ -41,41 +43,24 @@ public class Pylons {
 		bw.close();
 		br.close();
 	}
-	private static int toNumber(boolean[][] galaxy) {
-		int num=0;
+	private static boolean f(int r, int c,boolean[][] galaxy,ArrayList<Integer> positions, int total) {
+		if(possible)return true;
+		if(total==R*C){possible=true;return true;}
 		for (int i = 0; i < galaxy.length; i++) {
 			for (int j = 0; j < galaxy[0].length; j++) {
-				if(galaxy[i][j]) {
-					num+=(1<<j+galaxy[0].length*i);
+				int movx=(int) (Math.random()*R);
+				int movy=(int) (Math.random()*C);
+				if(check(r,c,movx,movy) && !galaxy[movx][movy]) {
+					galaxy[movx][movy]=true;
+					positions.add(movx);positions.add(movy);
+					f(movx,movy,galaxy,positions,total+1);
+					if(possible)return true;
+					galaxy[movx][movy]=false;
+					positions.remove(positions.size()-1);positions.remove(positions.size()-1);
 				}
 			}
 		}
-		return num;
-	}
-	private static boolean f(int r, int c, boolean[][] galaxy, int total, StringBuilder sb) {
-		if(memo[toNumber(galaxy)]!=-1)return memo[toNumber(galaxy)]==1?true:false;
-		if(total==R*C) {
-			builder=sb;
-			return true;
-		}
-		boolean ans=false;
-		for (int i = 0; i < R; i++) {
-			for (int j = 0; j < C; j++) {
-				if(check(r,c,i,j)&&!galaxy[i][j]) {
-					boolean[][] g=new boolean[R][C];
-					for (int k = 0; k < g.length; k++) {
-						g[k]=galaxy[k].clone();
-					}
-					g[i][j]=true;
-					StringBuilder s=new StringBuilder(sb.toString());
-					s.append((i+1)+" "+(j+1)+"\n");
-					memo[toNumber(g)]=f(i,j,g,total+1,s)?1:0;
-					ans=ans|memo[toNumber(g)]==1?true:false;
-				}
-			}
-		}
-		memo[toNumber(galaxy)]=ans?1:0;
-		return memo[toNumber(galaxy)]==1?true:false;
+		return possible;
 	}
 	private static boolean check(int r, int c, int i, int j) {
 		if(r==i || c==j)return false;
