@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+class Building{
+	int L,H,R;
+	public Building(int l, int h, int r) {
+		L=l;
+		H=h;
+		R=r;
+	}
+}
+public class SkyLine {
+
+	public static void main(String[] args) {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+		String A;
+		while((A=br.readLine())!=null) {
+			
+		}
+	}
+
+}
