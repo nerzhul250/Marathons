@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class house {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int m=sc.nextInt();
+		for (int n = m+2; n <=10000000; n++) {
+			long val=n*(n+1)+m*(m-1);
+			val=val/2;
+			int root=Math.sqrt(val);
+			if()
+		}
+	}
+
+}
