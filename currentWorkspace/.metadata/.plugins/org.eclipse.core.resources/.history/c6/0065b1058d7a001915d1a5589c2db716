@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class Stall{
+	ArrayList<Stall>neigh;
+	double s;
+	public Stall(double satis) {
+		s=satis;
+		neigh=new ArrayList<Stall>();
+	}
+}
+public class eating {
+	static double ans[][];
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int m=sc.nextInt();
+		Stall[] satis=new Stall[n];
+		ans=new double[n][101];
+		for (int i = 0; i < n; i++) {
+			satis[i]=new Stall(sc.nextDouble());
+			for (int j = 0; j < 100; j++) {
+				ans[i][j]=-1;
+			}
+		}
+		for (int i = 0; i <m; i++) {
+			int a1=sc.nextInt();
+			int a2=sc.nextInt();
+			satis[a1].neigh.add(satis[a2]);
+		}
+		System.out.println(max(satis,0,1));
+	}
+
+	private static double max(Stall[] satis, int i, int k) {
+		if(k==101)return 0;
+		if(ans[i][k]>=-0.5)return ans[i][k];
+		for (int j = 0; j < satis[i].neigh.size(); j++) {
+			
+		}
+	}
+
+}
