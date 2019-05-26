@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1558891673 source:c:\users\asus\documents\github\marathons\cppmarprog\pairs\main.cpp
+	<iostream>
+	<algorithm>
+	<vector>
+	<utility>
+
