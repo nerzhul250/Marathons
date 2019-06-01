@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1559381216 source:c:\users\asus\documents\github\marathons\cppmarprog\treeconstructfrompreandino\main.cpp
+	<iostream>
+	<map>
+	<sstream>
+
