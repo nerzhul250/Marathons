@@ -1,50 +1,63 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <queue>
+#include <functional>
+
 //LOWEST COMMON ancestor and MAX EDGE BETWEEN TWO NODES IN A TREE
 using namespace std;
+
 typedef pair<int,int> ii;
-typedef vector<int > vi;
+typedef vector<int> vi;
 
+struct Edge
+{
+    int u;
+    int c;
+    int t;
+};
 
-map<int,map<int,int>> roads;
+/*vector<Edge> AdjList [100006];
+vi taken; // global boolean flag to avoid cycle
 
+int N,R,Q,A,B,C,u,w;
 
-
-class UnionFind { // OOP style
-private: vi p, rank; // remember: vi is vector<int>
-public:
-UnionFind(int N) { rank.assign(N, 0);
-    p.assign(N, 0); for (int i = 0; i < N; i++) p[i] = i; }
-    int findSet(int i) { return (p[i] == i) ? i : (p[i] = findSet(p[i])); }
-    bool isSameSet(int i, int j) { return findSet(i) == findSet(j); }
-    void unionSet(int i, int j) {
-    if (!isSameSet(i, j)) { // if from different set
-    int x = findSet(i), y = findSet(j);
-    if (rank[x] > rank[y]) p[y] = x; // rank keeps the tree short
-    else { p[x] = y;
-    if (rank[x] == rank[y]) rank[y]++; }
-} } };
-
-
-
+void process(int vtx) { // so, we use -ve sign to reverse the sort order
+    taken[vtx] = 1;
+    for (int j = 0; j < (int)AdjList[vtx].size(); j++) {
+        ii v = AdjList[vtx][j].first;
+        if (!taken[v.first]) pq.push(ii(ii(ii(-v.second,j),AdjList[vtx][j].second),vtx));
+} }*/
 
 int main()
 {
+    auto cmp = [](Edge &a, Edge &b) { return a.c>b.c;};
+    priority_queue<Edge,vector<Edge>, decltype(cmp)> pq(cmp);
 
-    vector< pair<int, ii> > EdgeList; // (weight, two vertices) of the edge
-    for (int i = 0; i < E; i++) {
-    scanf("%d %d %d", &u, &v, &w); // read the triple: (u, v, w)
-    EdgeList.push_back(make_pair(w, ii(u, v))); } // (w, u, v)
-    sort(EdgeList.begin(), EdgeList.end()); // sort by edge weight O(E log E)
-    // note: pair object has built-in comparison function
-    int mst_cost = 0;
-    UnionFind UF(V); // all V are disjoint sets initially
-    for (int i = 0; i < E; i++) { // for each edge, O(E)
-    pair<int, ii> front = EdgeList[i];
-    if (!UF.isSameSet(front.second.first, front.second.second)) { // check
-    mst_cost += front.first; // add the weight of e to MST
-    UF.unionSet(front.second.first, front.second.second); // link them
-    } }
+    cin >> N >> R;
+    for(int i=0;i<R;i++){
+        cin >> A >> B >> C;
+        AdjList[A-1].push_back(ii(ii(B-1,C),0));
+        AdjList[B-1].push_back(ii(ii(A-1,C),0));
+    }
+    taken.assign(N, 0); // no vertex is taken at the beginning
+    process(0); // take vertex 0 and process all edges incident to vertex 0
+    mst_cost = 0;
+    while (!pq.empty()) { // repeat until V vertices (E=V-1 edges) are taken
+        ii front = pq.top(); pq.pop();
+        u = -front.first.first.second, w = -front.first.first.first; // negate the id and weight again
+        if (!taken[u]){
+            mst_cost += w, process(u); // take u, process all edges incident to u
+
+        } // we have not connected this vertex yet
+    } // each edge is in pq only once!
+    printf("MST cost = %d (Prim’s)\n", mst_cost);
+
+
+
+    cin >> Q;
+    for(int i=0;i<Q;i++){
+
+    }
     return 0;
 }
