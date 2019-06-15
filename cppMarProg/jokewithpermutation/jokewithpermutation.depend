@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1560189403 source:c:\users\asus\documents\github\marathons\cppmarprog\jokewithpermutation\main.cpp
+	<iostream>
+	<vector>
+	<string>
+

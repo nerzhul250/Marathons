@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1560266284 source:c:\users\asus\documents\github\marathons\cppmarprog\maximumsine\main.cpp
+	<iostream>
+	<cmath>
+

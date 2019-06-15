@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1560204288 source:c:\users\asus\documents\github\marathons\cppmarprog\bruteforceops\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+

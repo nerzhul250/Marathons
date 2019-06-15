@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1560442685 source:c:\users\asus\documents\github\marathons\cppmarprog\largestrectangle\main.cpp
+	<iostream>
+	<vector>
+	<stdio.h>
+	<cmath>
+

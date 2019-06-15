@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1560270411 source:c:\users\asus\documents\github\marathons\cppmarprog\agressivecows\main.cpp
+	<iostream>
+	<algorithm>
+	<vector>
+	<cmath>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1560429130 source:c:\users\asus\documents\github\marathons\cppmarprog\fiboeasy\main.cpp
+	<iostream>
+	<cmath>
+	<vector>
+

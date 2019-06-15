@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1560459000 source:c:\users\asus\documents\github\marathons\cppmarprog\subsetsums\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
