@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1559764096 source:e:\data\maratones\maratones\cppmarprog\imperialroads\main.cpp
+	<iostream>
+	<map>
+	<vector>
+	<queue>
+	<functional>
+	<cmath>
+
