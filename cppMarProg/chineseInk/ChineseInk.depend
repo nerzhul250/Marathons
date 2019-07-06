@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1561586779 source:e:\data\maratones\maratones\cppmarprog\chineseink\main.cpp
+	<stdio.h>
+	<math.h>
+	<algorithm>
+	<set>
+	<vector>
+	<sstream>
+	<iostream>
+

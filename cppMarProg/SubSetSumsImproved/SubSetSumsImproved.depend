@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1561139678 source:e:\data\maratones\maratones\cppmarprog\subsetsumsimproved\main.cpp
+	<stdio.h>
+	<map>
+	<algorithm>
+

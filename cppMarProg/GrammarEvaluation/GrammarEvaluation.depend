@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1560775463 source:e:\data\maratones\maratones\cppmarprog\grammarevaluation\main.cpp
+	<iostream>
+	<string>
+	<float.h>
+	<math.h>
+

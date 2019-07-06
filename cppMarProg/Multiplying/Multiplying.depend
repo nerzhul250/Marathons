@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1561513196 source:e:\data\maratones\maratones\cppmarprog\multiplying\main.cpp
+	<iostream>
+	<unordered_map>
+	<vector>
+	<climits>
+

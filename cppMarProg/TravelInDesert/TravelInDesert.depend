@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1561217411 source:e:\data\maratones\maratones\cppmarprog\travelindesert\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+	<queue>
+	<utility>
+	<math.h>
+
