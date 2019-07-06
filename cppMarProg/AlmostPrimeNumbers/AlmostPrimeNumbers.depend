@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1561137081 source:e:\data\maratones\maratones\cppmarprog\almostprimenumbers\main.cpp
+	<iostream>
+	<math.h>
+	<bitset>
+	<vector>
+	<algorithm>
+
