@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1565466805 source:c:\users\asus\documents\github\marathons\cppmarprog\kingscolors\main.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<cmath>
+	<algorithm>
+

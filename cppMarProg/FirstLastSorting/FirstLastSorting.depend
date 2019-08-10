@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1565472881 source:c:\users\asus\documents\github\marathons\cppmarprog\firstlastsorting\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+
