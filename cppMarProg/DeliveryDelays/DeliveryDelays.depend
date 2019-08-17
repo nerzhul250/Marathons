@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1566073542 source:c:\users\asus\documents\github\marathons\cppmarprog\deliverydelays\main.cpp
+	<iostream>
+	<vector>
+	<unordered_map>
+

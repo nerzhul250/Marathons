@@ -46,6 +46,7 @@ int main()
 
         while(i<=j){
             int midTemp=(i+j)/2;
+
             vi dist(N, INF); dist[S] = 0; // INF = 1B to avoid overflow
             priority_queue< ii, vector<ii>, greater<ii> > pq; pq.push(ii(0,S));
             while (!pq.empty()) { // main loop
