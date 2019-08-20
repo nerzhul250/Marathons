@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1566209980 source:c:\users\asus\documents\github\marathons\cppmarprog\soldierandcards\main.cpp
+	<iostream>
+	<unordered_set>
+	<string.h>
+	<vector>
+
