@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1566307379 source:c:\users\asus\documents\github\marathons\cppmarprog\watchmen\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+
