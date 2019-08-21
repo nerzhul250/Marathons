@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1566359708 source:c:\users\asus\documents\github\marathons\cppmarprog\sumofdigits\main.cpp
+	<iostream>
+	<string.h>
+
