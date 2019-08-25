@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1566698417 source:c:\users\asus\documents\github\marathons\cppmarprog\fractionformula\main.cpp
+	<iostream>
+	<string.h>
+

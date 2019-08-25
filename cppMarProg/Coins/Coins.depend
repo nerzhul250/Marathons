@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1566475801 source:c:\users\asus\documents\github\marathons\cppmarprog\coins\main.cpp
+	<iostream>
+	<algorithm>
+

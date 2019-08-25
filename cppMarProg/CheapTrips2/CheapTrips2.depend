@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1566749338 source:c:\users\asus\documents\github\marathons\cppmarprog\cheaptrips2\main.cpp
+	<iostream>
+	<unordered_map>
+	<iomanip>
+

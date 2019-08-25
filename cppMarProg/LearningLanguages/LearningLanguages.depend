@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1566479246 source:c:\users\asus\documents\github\marathons\cppmarprog\learninglanguages\main.cpp
+	<iostream>
+	<vector>
+	<unordered_set>
+	<bits/stdc++.h>
+
