@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1567859376 source:c:\users\asus\documents\github\marathons\cppmarprog\bruteforceoforzpandas\main.cpp
+	<iostream>
+	<math.h>
+

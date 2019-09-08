@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1567340664 source:c:\users\asus\documents\github\marathons\cppmarprog\lookandsaysequences\main.cpp
+	<iostream>
+	<string>
+	<vector>
+

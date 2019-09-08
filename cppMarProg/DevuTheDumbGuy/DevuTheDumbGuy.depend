@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1567597794 source:c:\users\asus\documents\github\marathons\cppmarprog\devuthedumbguy\main.cpp
+	<iostream>
+	<algorithm>
+

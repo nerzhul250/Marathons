@@ -9,6 +9,7 @@ using namespace std;
 
 int arr[100005],n,q;
 ll tree[5000005], lazy[5000005];
+ll minTree[5000005], minLazy[5000005];
 
 void build_tree(int node, int a, int b) {
   	if(a > b) return;

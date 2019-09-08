@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1567710090 source:c:\users\asus\documents\github\marathons\cppmarprog\vasyaandpetyasgame\main.cpp
+	<iostream>
+	<bitset>
+	<vector>
+

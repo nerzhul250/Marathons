@@ -121,7 +121,6 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     counter=0;
-    test();
     while(cin >> ex){
         i=0;
         cout << parse() << "\n";

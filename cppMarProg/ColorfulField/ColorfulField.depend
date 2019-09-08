@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1567828913 source:c:\users\asus\documents\github\marathons\cppmarprog\colorfulfield\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+
