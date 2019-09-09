@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1567971598 source:e:\data\maratones\maratones\cppmarprog\kefaandpark\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+
