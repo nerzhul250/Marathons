@@ -10,7 +10,7 @@ vi match, vis; // global variables
 vi AdjList [2005];
 int color[2005],V,visited[2005];
 map<ii,int> pToN;
-
+//NORMAL AUGMENTING PATH ALGORITHM V*E
 int Aug(int l) { // return 1 if an augmenting path is found
 if (vis[l]) return 0; // return 0 otherwise
 vis[l] = 1;
@@ -48,7 +48,8 @@ void setUpNeighbors(ii pos,int node,int type){
     }
 
 }
-
+//MAXIMUM CARDINALITE BIPARTITE MATCHING
+//Algorithm to find maximum number of edges such that none of them share an endpoint
 int main()
 {
     ios_base::sync_with_stdio(false);
