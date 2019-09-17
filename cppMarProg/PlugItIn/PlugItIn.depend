@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1568670306 source:e:\data\repositories\maratones\maratones\cppmarprog\plugitin\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+

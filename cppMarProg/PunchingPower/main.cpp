@@ -29,21 +29,25 @@ void setUpNeighbors(ii pos,int node,int type){
     ii g=ii(pos.first-1,pos.second);
     if(pToN.find(g)!=pToN.end()){
         AdjList[node].push_back(pToN[g]);
+        AdjList[pToN[g]].push_back(node);
         setUpNeighbors(g,pToN[g],1-type);
     }
     g=ii(pos.first+1,pos.second);
     if(pToN.find(g)!=pToN.end()){
         AdjList[node].push_back(pToN[g]);
+        AdjList[pToN[g]].push_back(node);
         setUpNeighbors(g,pToN[g],1-type);
     }
     g=ii(pos.first,pos.second-1);
     if(pToN.find(g)!=pToN.end()){
         AdjList[node].push_back(pToN[g]);
+        AdjList[pToN[g]].push_back(node);
         setUpNeighbors(g,pToN[g],1-type);
     }
     g=ii(pos.first,pos.second+1);
     if(pToN.find(g)!=pToN.end()){
         AdjList[node].push_back(pToN[g]);
+        AdjList[pToN[g]].push_back(node);
         setUpNeighbors(g,pToN[g],1-type);
     }
 
