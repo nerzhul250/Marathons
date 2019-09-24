@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569271470 source:e:\data\maratones\maratones\cppmarprog\inkcolors2\main.cpp
+	<iostream>
+	<vector>
+	<string.h>
+
