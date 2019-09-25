@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569333276 source:c:\users\asus\documents\github\marathons\cppmarprog\downwentthetitanic\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+
