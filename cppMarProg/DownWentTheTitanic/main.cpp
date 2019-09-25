@@ -114,9 +114,9 @@ int main()
                 }else if(symbols[i][j]=='@'){
                     capacity[Vin][Vout]=INF;
                 }else if(symbols[i][j]=='#'){
-                    capacity[Vin][Vout]=P;
-                    capacity[Vout][X*Y*2+1]=INF;
-                    capacity[X*Y*2+1][Vin]=INF;
+                    capacity[Vin][Vout]=INF;
+                    capacity[Vout][X*Y*2+1]=P;
+                    capacity[X*Y*2+1][Vin]=P;
                     adj[Vout].push_back(X*Y*2+1);
                     adj[X*Y*2+1].push_back(Vout);
                     adj[X*Y*2+1].push_back(Vin);
