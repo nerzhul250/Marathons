@@ -16,7 +16,6 @@ int bfs(int s, int t, vector<int>& parent) {
     parent[s] = -2;
     queue<pair<int, int>> q;
     q.push({s, INF});
-
     while (!q.empty()) {
         int cur = q.front().first;
         int flow = q.front().second;
@@ -63,9 +62,11 @@ void connect(int ori, int orj, int desi, int desj){
         int VDout=desi*Y+desj+1+X*Y;
 
         adj[VOout].push_back(VDin);
+        adj[VDin].push_back(VOout);
         capacity[VOout][VDin]=INF;
 
         adj[VDout].push_back(VOin);
+        adj[VOin].push_back(VDout);
         capacity[VDout][VOin]=INF;
     }
 }
@@ -78,8 +79,8 @@ int main()
         n=X*Y*2+2;
         capacity.clear();
         adj.clear();
-        for(int i=0;i<X*Y*2+2;i++){
-            capacity.push_back(vector<int>(X*Y*2+2,0));
+        for(int i=0;i<n;i++){
+            capacity.push_back(vector<int>(n,0));
             adj.push_back(vector<int>(1,0));
             adj[i].clear();
         }
@@ -95,6 +96,7 @@ int main()
                 int Vin=i*Y+j+1;
                 int Vout=i*Y+j+1+X*Y;
                 adj[Vin].push_back(Vout);
+                adj[Vout].push_back(Vin);
                 connect(i,j,i,j+1);
                 connect(i,j,i+1,j);
                 if(symbols[i][j]=='~'){
@@ -102,8 +104,11 @@ int main()
                 }else if(symbols[i][j]=='*'){
                     capacity[Vin][Vout]=1;
                     capacity[0][Vin]=INF;
+                    capacity[Vout][0]=INF;
                     adj[0].push_back(Vin);
+                    adj[Vin].push_back(0);
                     adj[Vout].push_back(0);
+                    adj[0].push_back(Vout);
                 }else if(symbols[i][j]=='.'){
                     capacity[Vin][Vout]=1;
                 }else if(symbols[i][j]=='@'){
@@ -111,8 +116,11 @@ int main()
                 }else if(symbols[i][j]=='#'){
                     capacity[Vin][Vout]=P;
                     capacity[Vout][X*Y*2+1]=INF;
+                    capacity[X*Y*2+1][Vin]=INF;
                     adj[Vout].push_back(X*Y*2+1);
+                    adj[X*Y*2+1].push_back(Vout);
                     adj[X*Y*2+1].push_back(Vin);
+                    adj[Vin].push_back(X*Y*2+1);
                 }
             }
         }
