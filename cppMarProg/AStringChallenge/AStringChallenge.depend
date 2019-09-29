@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1569771611 source:e:\data\maratones\maratones\cppmarprog\astringchallenge\main.cpp
+	<iostream>
+	<string.h>
+
