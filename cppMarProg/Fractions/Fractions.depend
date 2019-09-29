@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1569702715 source:c:\users\asus\documents\github\marathons\cppmarprog\fractions\main.cpp
+	<iostream>
+	<vector>
+

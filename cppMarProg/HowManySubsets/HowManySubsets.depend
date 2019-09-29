@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1569701277 source:c:\users\asus\documents\github\marathons\cppmarprog\howmanysubsets\main.cpp
+	<iostream>
+	<algorithm>
+

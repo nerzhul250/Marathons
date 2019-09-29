@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569634066 source:c:\users\asus\documents\github\marathons\cppmarprog\ratatoskr\main.cpp
+	<iostream>
+	<vector>
+	<string.h>
+
