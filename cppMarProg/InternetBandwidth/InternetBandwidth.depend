@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569673941 source:e:\data\maratones\maratones\cppmarprog\internetbandwidth\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+

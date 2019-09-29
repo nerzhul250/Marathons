@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569551942 source:e:\data\maratones\maratones\cppmarprog\filyaandhomework\main.cpp
+	<iostream>
+	<set>
+	<iterator>
+
