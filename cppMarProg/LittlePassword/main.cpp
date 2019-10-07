@@ -1,12 +1,12 @@
 #include <iostream>
-#include <map>
 #include <string.h>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 struct state {
-    int len, link;
-    map<char, int> next;
+    int len, link, numOfTransitions=0;
+    int next[10]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 };
 
 const int MAXLEN = 100000;
@@ -27,12 +27,13 @@ void sa_init() {
     last = 0;
 }
 
-void sa_extend(char c) {
+void sa_extend(int c) {
     int cur = sz++;
     st[cur].len = st[last].len + 1;
     int p = last;
-    while (p != -1 && !st[p].next.count(c)) {
+    while (p != -1 && st[p].next[c]==-1) {
         st[p].next[c] = cur;
+        st[p].numOfTransitions++;
         p = st[p].link;
     }
     if (p == -1) {
@@ -44,8 +45,9 @@ void sa_extend(char c) {
         } else {
             int clone = sz++;
             st[clone].len = st[p].len + 1;
-            st[clone].next = st[q].next;
+            copy(begin(st[q].next), end(st[q].next),begin(st[clone].next));
             st[clone].link = st[q].link;
+            st[clone].numOfTransitions=st[q].numOfTransitions;
             while (p != -1 && st[p].next[c] == q) {
                 st[p].next[c] = clone;
                 p = st[p].link;
@@ -58,28 +60,28 @@ void sa_extend(char c) {
 
 int d(int v){
     if(dp[v]!=0)return dp[v];
-    if(st[v].next.size()!=st[0].next.size())return dp[v]= 1;
+    if(st[v].numOfTransitions!=st[0].numOfTransitions)return dp[v]= 1;
     int minimum=1e9;
-    for(map<char,int> :: iterator it=st[v].next.begin();it!=st[v].next.end();it++){
-        minimum=min(minimum,d(it->second));
+    for(int i=0;i<=9;i++){
+        if(st[v].next[i]!=-1)minimum=min(minimum,d(st[v].next[i]));
     }
     return dp[v]=minimum+1;
 }
 
 
-void getAns(int v,char c){
-    if(c!='.')cout << c;
+void getAns(int v,int c){
+    if(c!=-1)cout << c;
     if(dp[v]==1){
-        for(map<char,int> :: iterator it=st[0].next.begin();it!=st[0].next.end();it++){
-             if(st[v].next.find(it->first)==st[v].next.end()){
-                cout << it->first;
+        for(int i=0;i<=9;i++){
+             if(st[0].next[i]!=-1 &&st[v].next[i]==-1){
+                cout << i;
                 return ;
             }
         }
     }
-    for(map<char,int> :: iterator it=st[v].next.begin();it!=st[v].next.end();it++){
-        if(dp[it->second]==dp[v]-1){
-            getAns(it->second,it->first);
+    for(int i=0;i<=9;i++){
+        if(st[v].next[i]!=-1 && dp[st[v].next[i]]==dp[v]-1){
+            getAns(st[v].next[i],i);
             break;
         }
     }
@@ -99,10 +101,10 @@ int main()
         cin >> S;
         sa_init();
         for(int i=0;i<N;i++){
-            sa_extend(S[i]);
+            sa_extend(S[i]-'0');
         }
         cout << d(0) << " ";
-        getAns(0,'.');
+        getAns(0,-1);
         cout << "\n";
     }
     return 0;
