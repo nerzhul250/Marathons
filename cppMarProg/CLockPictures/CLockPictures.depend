@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1571097853 source:e:\data\repositories\maratones\maratones\cppmarprog\clockpictures\main.cpp
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+

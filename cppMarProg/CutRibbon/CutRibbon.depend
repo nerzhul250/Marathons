@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1571103534 source:e:\data\repositories\maratones\maratones\cppmarprog\cutribbon\main.cpp
+	<iostream>
+	<string.h>
+
