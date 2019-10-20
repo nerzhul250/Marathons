@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1571192444 source:c:\users\asus\documents\github\marathons\cppmarprog\convexfence\main.cpp
+	<iostream>
+	<math.h>
+	<vector>
+	<algorithm>
+
