@@ -1,0 +1,92 @@
+#include <bits/stdc++.h>
+
+#define ff first
+#define ss second
+#define mp make_pair
+#define pb push_back
+
+using namespace std;
+
+int encontrar(bool ar[30],int SIZE){
+    int res=0;
+    for(int i = 0; i < SIZE; i++){
+        if(!ar[i]){
+            res= i;
+            break;
+        }
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    #ifdef LOCAL
+     freopen("input.txt", "r", stdin);
+    #else
+      #define endl '\n'
+    #endif
+
+    int k; cin>>k;
+    string s; cin>>s;
+    bool usadas[k+5];
+    memset(usadas,0,sizeof usadas);
+    int i,j;
+    i=0;j= s.size()-1;
+    string res;
+    int cantUsadas=0;
+    bool imposible=false;
+    while(i<=j){
+        if(i!= j){
+            if(s[i]!= '?' && s[j]!= '?'){
+                if(s[i]!=s[j]){
+                    res="IMPOSSIBLE";
+                    imposible = true;
+                    break;
+                }else{
+                    usadas[s[i]-'a']= 1;
+                    cantUsadas++;
+                }
+            }else{
+                if((s[i]!= '?'&&s[j]=='?') || (s[i]== '?'&&s[j]!='?')){
+                    if(s[i]!= '?'&&s[j]=='?'){
+                        s[j]=s[i];
+                        usadas[s[i]-'a']=1;
+                        cantUsadas++;
+                    }else if(s[i]== '?'&&s[j]!='?'){
+                        s[i]=s[j];
+                        usadas[s[j]-'a']=1;
+                        cantUsadas++;
+                    }
+                }else if(s[i]== '?'&&s[j]=='?'){
+                    int l= encontrar(usadas,k);
+                    s[i]='a'+l;
+                    s[j]= 'a'+l;
+                    usadas[l]=1;
+                    cantUsadas++;
+                }
+            }
+        }else{
+            if(s[i]=='?'){
+                int l = encontrar(usadas,k);
+                s[i]= 'a'+l;
+                usadas[l]=1;
+            }
+        }
+    }
+    if(imposible){
+        cout<<res;
+    }else{
+        int cant = 0;
+        for(int i =0; i< usados.size();i++){
+            if(usados[i]){
+                cant++;
+            }
+        }
+        if(cant == k){
+            cout<<s;
+        }else{
+            cout>>"IMPOSSIBLE";
+        }
+    }
+
+}

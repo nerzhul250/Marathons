@@ -2,26 +2,28 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="FiestaEnAmerica" />
+		<Option title="ShortProgram" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/FiestaEnAmerica" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/ShortProgram" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DLOCAL=1" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/FiestaEnAmerica" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/ShortProgram" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DLOCAL=1" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,6 +40,7 @@
 			<code_completion />
 			<envvars />
 			<debugger />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
