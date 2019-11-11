@@ -6,40 +6,31 @@
 #define pb push_back
 
 using namespace std;
+#define MOD 1000000007
+long long S,B;
 
-typedef long long int ll;
+long long memo[101][201][201];
 
-ll const MOD=7+1e9;
-ll combi[1000][1000],S,B;
-
-ll getncomk(ll n, ll k){
-    if(combi[n][k]!=0)return combi[n][k];
-    if(n==k){
-        return 1;
-    }else if(k==0){
-        return 1;
+long long dp(int pos,int piedras,int val){
+    if(pos==0){
+        if(val==0 && piedras==0)return 1;
+        return 0;
+    }else if(piedras<0){
+        return 0;
     }
-    return combi[n][k]=(getncomk(n-1,k-1)+getncomk(n-1,k))%MOD;
+    if(memo[pos][piedras][val]!=-1)return memo[pos][piedras][val];
+    memo[pos][piedras][val]=(dp(pos-1,piedras,val/2)+dp(pos,piedras-1,val+1))%MOD;
+    return memo[pos][piedras][val];
 }
 
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    #ifdef LOCAL
-     freopen("input.txt", "r", stdin);
-    #else
-      #define endl '\n'
-    #endif
-    while(cin >> S>>B){
-        ll ans=0;
-        for(int i=1;i<B;i++){
-            for(int j=(1<<i);j<=S;j++){
-                ans+=getncomk(B-3+S-j,S-j);
-                ans=ans%MOD;
-            }
-        }
-        cout << (getncomk(B-2+S,S)-ans+MOD)%MOD<<endl;
+int main(){
+
+    int n;
+    memset(memo,-1,sizeof(memo));
+
+    while(cin>>S>>B){
+        cout<<dp(B-1,S,0)%MOD<<endl;
     }
 
+    return 0;
 }
