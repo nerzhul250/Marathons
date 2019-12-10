@@ -1,6 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
+
+#define ff first
+#define ss second
+#define mp make_pair
+#define pb push_back
+#define fore(i,low,n) for(int i=low;i<n;i++)
 
 using namespace std;
 
@@ -114,7 +118,15 @@ template <class T> struct PushRelabel {
     }
 };
 
-
+void addToPoints(vector<ii>& points,ii thePoint){
+	if(points.size()!=0 && points.back().ss==thePoint.ff){
+		ii theSecondPoint=points.back();
+		points.pop_back();
+		points.pb({theSecondPoint.ff,thePoint.ss});
+	}else{
+		points.pb(thePoint);
+	}
+}
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -123,37 +135,80 @@ int main()
     while(cin >> n){
         if(n==0)break;
         t++;
-        cin >> m;
-        PushRelabel<int> mfGraph(50000+n+1);
-        for(int i=1;i<50000;i++){
-            mfGraph.AddEdge(i,50000+n,m);
-        }
+        cin >> m;    
         int sum=0;
+        vector<pair<ii,int>> monkeys;
+        vector<int> intervalPoints;
+        set<int> theSet;
         for(int i=0;i<n;i++){
             int v,a,b;
             cin >> v >> a >> b;
+            monkeys.pb({{a,b},v});
+            if(theSet.find(a)==theSet.end())intervalPoints.pb(a);
+            theSet.insert(a);
+            if(theSet.find(b-1)==theSet.end())intervalPoints.pb(b-1);
+            theSet.insert(b-1);
             sum+=v;
-            mfGraph.AddEdge(0,50000+i,v);
-            for(int j=a;j<b;j++){
-                mfGraph.AddEdge(50000+i,j,1);
-            }
         }
-        int maxFlow=mfGraph.GetMaxFlow(0,50000+n);
+        sort(intervalPoints.begin(),intervalPoints.end());
+        int siguiente=-1;
+        vector<pair<ii,int>> intervals;
+        fore(i,0,intervalPoints.size()){
+			int endPoint=intervalPoints[i];
+			if(siguiente!=-1){
+				if(siguiente!=endPoint)intervals.pb({{siguiente,endPoint},endPoint-siguiente});
+			}
+			siguiente=endPoint+1;
+			intervals.pb({{endPoint,siguiente},siguiente-endPoint});
+		}
+        PushRelabel<int> mfGraph(n+intervals.size()+2);
+        for(int i=0;i<n;i++){
+            mfGraph.AddEdge(0,i+1,monkeys[i].ss);
+            fore(j,0,intervals.size()){
+				if(i==0)mfGraph.AddEdge(n+j+1,1+n+intervals.size(),m*intervals[j].ss);
+				if(monkeys[i].ff.ff<=intervals[j].ff.ff && intervals[j].ff.ss<=monkeys[i].ff.ss){
+					mfGraph.AddEdge(i+1,n+j+1,intervals[j].ss);
+				}
+			}
+        }
+        int maxFlow=mfGraph.GetMaxFlow(0,1+n+intervals.size());
         if(maxFlow==sum){
             cout << "Case "<<t<<": Yes\n";
             for(int i=0;i<n;i++){
                 vector<ii> points;
-                for(int j=1;j<mfGraph.adj[i+50000].size();j++){
-                    int flow=mfGraph.adj[i+50000][j].flow;
-                    int to=mfGraph.adj[i+50000][j].to;
-                    if(flow==1){
-                        if(points.size()==0 || points[points.size()-1].second!=to){
-                            points.push_back(ii(to,to+1));
-                        }else{
-                            points[points.size()-1].second++;
-                        }
-                    }
-                }
+                fore(j,0,mfGraph.adj[i+1].size()){
+					//cout <<i<<" "<<j<<" here"<<endl;
+					int intervalIndex=mfGraph.adj[i+1][j].to-n-1;
+					ii theInterval=intervals[intervalIndex].ff;
+					int momentsRem=intervals[intervalIndex].ss;
+					int flow=mfGraph.adj[i+1][j].flow;
+					int cap=mfGraph.adj[i+1][j].cap;
+					//cout << theInterval.ff<<" "<<theInterval.ss<<" "<<momentsRem<<" "<<flow<<" "<<cap<<endl;
+					if(flow>0){
+						if(flow<momentsRem){
+							int leftEnd=theInterval.ss-momentsRem;
+							int rightEnd=leftEnd+flow;
+							intervals[intervalIndex].ss=intervals[intervalIndex].ss-flow;
+							addToPoints(points,ii(leftEnd,rightEnd));
+						}else if(flow==momentsRem){
+							int leftEnd=theInterval.ss-momentsRem;
+							int rightEnd=leftEnd+flow;
+							intervals[intervalIndex].ss=intervals[intervalIndex].ff.ss-intervals[intervalIndex].ff.ff;
+							addToPoints(points,ii(leftEnd,rightEnd));
+						}else if(flow>momentsRem){
+							if(flow==intervals[intervalIndex].ff.ss-intervals[intervalIndex].ff.ff){
+								int leftEnd=theInterval.ff;
+								int rightEnd=theInterval.ss;
+								addToPoints(points,ii(leftEnd,rightEnd));
+							}else{
+								int remFlow=flow-momentsRem;
+								addToPoints(points,ii(intervals[intervalIndex].ff.ff,intervals[intervalIndex].ff.ff+remFlow));
+								addToPoints(points,ii(intervals[intervalIndex].ff.ss-momentsRem,intervals[intervalIndex].ff.ss));
+								intervals[intervalIndex].ss=intervals[intervalIndex].ff.ss-(intervals[intervalIndex].ff.ff+remFlow);
+							}
+						}
+					}
+				}
                 cout << points.size();
                 for(int k=0;k<points.size();k++){
                     cout << " (" << points[k].first << "," << points[k].second << ")";
