@@ -1,6 +1,5 @@
-#include <iostream>
-#include <vector>#include <queue>#include <string.h>
-#include <unordered_map>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 typedef vector<int> vi;
@@ -11,7 +10,7 @@ const ll INF=1e15;
 
 int n,m,k,startingTimes[1005],customers[1005],endTimes[1005];
 ll distances[1005][1005];
-unordered_map<ll,ll> dp[1005][1005];
+map<ll,ll> dp[1005][1005];
 vector<ii> AdjList [1005];
 
 ll scheduling(int init,int fin,ll gt){
