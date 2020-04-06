@@ -97,10 +97,7 @@ int main(){
 		ll midDelay=(leftDelay+rightDelay)/2;
 		memset(latestStartTime,-1,sizeof latestStartTime);
 		ll ans=latestStartTimeF(0,midDelay);
-		if(ans>=0){
-			for(int i=0;i<k;i++){
-				assert(latestStartTime[i]>=0);
-			}
+		if(ans>=orderDeliveryTime[0]){
 			maxDelay=midDelay;
 			rightDelay=midDelay-1;
 		}else{

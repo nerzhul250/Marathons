@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+
+#define ff first
+#define ss second
+#define mp make_pair
+#define pb push_back
+#define fore(i,low,n) for(int i=low;i<n;i++)
+
+using namespace std;
+int problems[35];
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int n;
+    int cash;
+    cin >> n >> cash;
+    int sum=0;
+    fore(i,0,n){
+		cin >> problems[i];
+		sum+=problems[i];
+	}
+	int part=cash/sum;
+	fore(i,0,n){
+		cout << problems[i]*part<<"\n";
+	}
+    return 0;
+}
